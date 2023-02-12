@@ -1,0 +1,66 @@
+@import '../../../../styles/globals.config.scss';
+
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    img {
+        margin-bottom: 3.25rem;
+        max-width: 11.25rem;
+        height: 3.125rem;
+    }
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+
+    .name, .email, .password, .passwordConfim {
+        margin-bottom: -2rem;
+        z-index: 100;
+        width: 100%;
+        max-width: 3rem;
+        background-color: $white;
+        font-size: 13px;
+        margin-left: .5rem;
+        color: $base-gray;
+        padding-left: 3px;
+    }
+
+    .passwordConfim {
+        max-width: 8rem;
+    }
+
+    .showPassword {
+        width: 100%;
+        position: relative;
+        display: flex;
+
+        input {
+            width: 100%;
+        }
+
+        button {
+            position: absolute;
+            right: .5rem;
+            margin-top: .6rem;
+            background-color: transparent;
+            border: none;
+
+            &:disabled {
+                cursor: not-allowed;
+            }
+
+            svg {
+                color: $primary-color;
+            }
+        }
+    }
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+}

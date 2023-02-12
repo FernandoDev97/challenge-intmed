@@ -1,0 +1,108 @@
+@import '../../../../styles/globals.config.scss';
+
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    img {
+        margin-bottom: 3.25rem;
+        max-width: 11.25rem;
+        height: 3.125rem;
+    }
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+
+    .email, .password {
+        margin-bottom: -2rem;
+        z-index: 100;
+        width: 100%;
+        max-width: 6rem;
+        background-color: $white;
+        font-size: 13px;
+        margin-left: .5rem;
+        color: $base-gray;
+        padding-left: 3px;
+    }
+
+    .password {
+        max-width: 3rem;
+    }
+
+    .showPassword {
+        width: 100%;
+        position: relative;
+        display: flex;
+
+        input {
+            width: 100%;
+        }
+
+        button {
+            position: absolute;
+            right: .5rem;
+            margin-top: .6rem;
+            background-color: transparent;
+            border: none;
+
+            &:disabled {
+                cursor: not-allowed;
+            }
+
+            svg {
+                color: $primary-color;
+            }
+        }
+    }
+}
+
+.containerCheck {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    .rememberPassword {
+        display: none;
+        &:checked+label .checkbox {
+            &:after {
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+    }
+
+    .checkbox {
+        border: 1px solid $base-gray;
+        border-radius: 3px;
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+        position: relative;
+        margin-left: 0;
+
+        &:after {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            width: 20px;
+            height: 20px;
+            background-color: $primary-color;
+            border-radius: 3px;
+            transition: 0.3s;
+        }
+    }
+    .label {
+        font-size: 13px;
+        color: $base-gray;
+    }
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+}

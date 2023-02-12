@@ -1,0 +1,23 @@
+@import '../../styles/globals.config.scss';
+
+.input_globals {
+    height: 2.5rem;
+    border-radius: 4px;
+    border: 1px solid $base-gray;
+    transition: 0.4s;
+    color: $base-black;
+    font-size: 0.75rem;
+    padding: 0.75rem;
+    &:focus {
+        border-color: $primary-color;
+    }
+    &::placeholder {
+        color: $base-gray;
+    }
+    
+}
+
+.button {
+    width: 2rem;
+    height: 2rem;
+}

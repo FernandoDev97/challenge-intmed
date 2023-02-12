@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+// Fonts
+$primary-font: 'Roboto';
+
+// Colors
+$background-color: #E5E5E5;
+$primary-color: #49B4BB;
+$base-gray: #A8A8A8;
+$base-black: #444444;
+$white: #FFFFFF;
+$primary-hover: #90D3D7;
+$secundary-hover: #D9F1F3;
+$error-color: #EF5350;
+
+// break-points
+$primary-breakpoint-tablet: 768px;
+$primary-breakpoint-desktop: 1024px;
+
+@mixin media-min-width($width) {
+    @media only screen and (min-width: $width) {
+        @content;
+    }
+}
+@mixin media-desktop {
+    @include media-min-width($primary-breakpoint-desktop) {
+        @content;
+    }
+}
+@mixin media-tablet {
+    @include media-min-width($primary-breakpoint-tablet) {
+        @content;
+    }
+}
