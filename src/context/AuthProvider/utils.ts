@@ -6,11 +6,11 @@ export function setTokenLocalStorage (user: IUser | null) {
 }
 
 export function setUserLocalStorage (user: IUser | null) {
-    localStorage.setItem('user', JSON.stringify(user))
+    localStorage.setItem('user_session', JSON.stringify(user))
 }
 
 export function getUserLocalStorage () {
-    const user = localStorage.getItem('user')
+    const user = localStorage.getItem('users')
     if (!user) {
         return null;
     }
@@ -21,7 +21,6 @@ export function getUserLocalStorage () {
 export async function LoginRequest (email: string, password: string) {
     try {
         const request = await Api.post('users/login', {username: email, password: password})
-        console.log("Utils", request.data)
         return request.data
     } catch (error) {
         return null

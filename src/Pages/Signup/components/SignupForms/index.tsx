@@ -5,7 +5,8 @@ import logoMedicar from '../../../../assets/Logo.svg'
 import ButtonVariation from '../../../../Components/ButtonVariation'
 import Input from '../../../../Components/Input'
 import MessageError from '../../../../Components/MessageError'
-import { setUserLocalStorage } from '../../../../context/AuthProvider/utils'
+import { useAuth } from '../../../../context/AuthProvider/useAuth'
+import { getUserLocalStorage} from '../../../../context/AuthProvider/utils'
 import styles from './SignupForms.module.scss'
 
 const SignupForms = () => {
@@ -20,22 +21,30 @@ const SignupForms = () => {
   const navigate = useNavigate()
 
   function submitSignup(event: any) {
-    event.preventDefault()
-    const user ={
-      name: name,
-      email: email,
-      password: password
-    }
+    event.preventDefault() 
     if (!name || !email || !password || !passwordConfirm) {
       setError('Por favor, preencha todos os campos')
+      return
     } else if (password !== passwordConfirm) {
       setError("As senhas devem ser idênticas")
-    } else {
-      setUserLocalStorage(user)
-      console.log("deu certo caba vei")
-      setError('')
-      //navigate('/signin')
+      return
     }
+    const usersStorage = getUserLocalStorage()
+    const users = usersStorage?.filter((user: any) => user.email === email)
+        if (users?.length) {
+          setError("Usuário já cadastrado com esse email")
+          return
+        }
+        let newUser;
+        if (usersStorage) {
+            newUser = [...usersStorage, { name, email, password }];
+        } else {
+            newUser = [{ name, email, password }];
+        }
+        localStorage.setItem("users", JSON.stringify(newUser));
+        setError('')
+        navigate('/')
+    
 
   }
 
@@ -86,11 +95,11 @@ const SignupForms = () => {
         </div>
         <MessageError>{error}</MessageError>
         <div className={styles.buttons}>
-            <NavLink to='/signin'>
-              <ButtonVariation label="Cancelar" />
-            </NavLink>
-            <ButtonVariation type='submit' onClick={submitSignup} variation="primaryButton" label="Confirmar" />
-          </div>
+          <NavLink to='/signin'>
+            <ButtonVariation label="Cancelar" />
+          </NavLink>
+          <ButtonVariation type='submit' onClick={submitSignup} variation="primaryButton" label="Confirmar" />
+        </div>
       </form>
     </div>
   )
