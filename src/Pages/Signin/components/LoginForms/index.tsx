@@ -6,8 +6,8 @@ import styles from './LoginForms.module.scss'
 import { Eye, EyeSlash } from 'phosphor-react'
 import MessageError from '../../../../Components/MessageError'
 import { NavLink, useNavigate } from 'react-router-dom'
-import { getUserLocalStorage } from '../../../../context/AuthProvider/utils'
 import { useAuth } from '../../../../context/AuthProvider/useAuth'
+import { getUserLocalStorage, setUserLocalStorage } from '../../../../context/AuthProvider/utils'
 
 const LoginForms = () => {
   const [email, setEmail] = useState('')
@@ -27,21 +27,25 @@ const LoginForms = () => {
 
   async function submitSignin(event: any) {
     event.preventDefault()
-    // ver como pegar um elemnto por vez do localStorage 
+    const user = getUserLocalStorage()
+    const users = user?.filter((user: any) => user.email === email)
+   
     try {
       if (!email || !password) {
         setError('Por favor, preencha todos os campos')
+        return
+      } else if (email !== users[0]?.email || users[0]?.password !== password) {
+        setError('Usuário não cadastrado')
+        return
       } else {
-        await auth.authenticate(email, password)
-        console.log(auth.email, auth.password, auth.token)
+        await auth.authenticate("intmed", "challenge")
+        setUserLocalStorage(users[0]?.name)
         setError('')
         navigate('/')
       }
     } catch (error) {
       setError('Desculpe, tente novamente mais tarde')
     }
-
-
   }
 
   return (
