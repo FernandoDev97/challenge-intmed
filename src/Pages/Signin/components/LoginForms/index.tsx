@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import logoMedicar from '../../../../assets/Logo.svg'
 import ButtonVariation from "../../../../Components/ButtonVariation"
 import Input from "../../../../Components/Input"
@@ -6,31 +6,41 @@ import styles from './LoginForms.module.scss'
 import { Eye, EyeSlash } from 'phosphor-react'
 import MessageError from '../../../../Components/MessageError'
 import { NavLink, useNavigate } from 'react-router-dom'
+import { getUserLocalStorage } from '../../../../context/AuthProvider/utils'
+import { useAuth } from '../../../../context/AuthProvider/useAuth'
 
 const LoginForms = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
   const [error, setError] = useState("")
+  const auth = useAuth()
 
   const navigate = useNavigate()
 
-  const form = {
-    email: 'fer@123.com',
-    password: "12345"
-  }
-
-  function submitSignin(event: any) {
-    event.preventDefault()
-    if (!email || !password) {
-      setError('Por favor, preencha todos os campos')
-    } else if (email != form.email || password != form.password) {
-      setError("Email ou senha incorretos")
-    } else {
-      console.log(email, password)
-      setError('')
+  useEffect(() => {
+    const token = localStorage.getItem('token')
+    if (token) {
       navigate('/')
     }
+  }, [navigate])
+
+  async function submitSignin(event: any) {
+    event.preventDefault()
+    // ver como pegar um elemnto por vez do localStorage 
+    try {
+      if (!email || !password) {
+        setError('Por favor, preencha todos os campos')
+      } else {
+        await auth.authenticate(email, password)
+        console.log(auth.email, auth.password, auth.token)
+        setError('')
+        navigate('/')
+      }
+    } catch (error) {
+      setError('Desculpe, tente novamente mais tarde')
+    }
+
 
   }
 

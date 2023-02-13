@@ -5,6 +5,7 @@ import logoMedicar from '../../../../assets/Logo.svg'
 import ButtonVariation from '../../../../Components/ButtonVariation'
 import Input from '../../../../Components/Input'
 import MessageError from '../../../../Components/MessageError'
+import { setUserLocalStorage } from '../../../../context/AuthProvider/utils'
 import styles from './SignupForms.module.scss'
 
 const SignupForms = () => {
@@ -20,14 +21,20 @@ const SignupForms = () => {
 
   function submitSignup(event: any) {
     event.preventDefault()
+    const user ={
+      name: name,
+      email: email,
+      password: password
+    }
     if (!name || !email || !password || !passwordConfirm) {
       setError('Por favor, preencha todos os campos')
     } else if (password !== passwordConfirm) {
       setError("As senhas devem ser idênticas")
     } else {
+      setUserLocalStorage(user)
       console.log("deu certo caba vei")
       setError('')
-      navigate('/signin')
+      //navigate('/signin')
     }
 
   }
