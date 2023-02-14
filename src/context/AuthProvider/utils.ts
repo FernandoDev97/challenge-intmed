@@ -10,12 +10,21 @@ export function setUserLocalStorage (user: IUser | null) {
 }
 
 export function getUserSessionLocalStorage () {
-    const user = localStorage.getItem('user_session')
-    if (!user) {
+    const userSession = localStorage.getItem('user_session')
+    if (!userSession) {
         return null;
     }
-    const userJson = JSON.parse(user)
+    const userJson = JSON.parse(userSession)
     return userJson ?? null;
+}
+
+export function getTokenLocalStorage () {
+    const token = localStorage.getItem('token')
+    if (!token) {
+        return null;
+    }
+    const tokenJson = JSON.parse(token)
+    return tokenJson ?? null;
 }
 
 export function getUserLocalStorage () {

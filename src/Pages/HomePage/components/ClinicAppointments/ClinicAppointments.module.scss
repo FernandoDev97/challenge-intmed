@@ -72,7 +72,7 @@
     align-items: center;
     height: 32px;
     border-radius: 2px;
-    cursor: pointer;
+    cursor: default;
 
     &:nth-child(even) {
         background-color: $base-gray1;
@@ -98,6 +98,6 @@
     span {
         font-size: 13px;
         font-weight: 400;
-        color: $base-gray;
+        color: $base-black;
     }
 }

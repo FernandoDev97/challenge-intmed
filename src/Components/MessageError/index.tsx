@@ -5,9 +5,7 @@ type Props = {
 }
 
 const MessageError = ({children}: Props) => {
-  return (
-    <span className={syles.messageError}>{children}</span>
-  )
+  return <span className={syles.messageError}>{children}</span>
 }
 
 export default MessageError
