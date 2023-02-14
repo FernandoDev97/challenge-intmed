@@ -1,5 +1,4 @@
 import { Route, Routes, Navigate } from "react-router-dom";
-import { useAuth } from "./context/AuthProvider/useAuth";
 import HomePage from "./Pages/HomePage";
 import Signin from "./Pages/Signin";
 import Signup from "./Pages/Signup";

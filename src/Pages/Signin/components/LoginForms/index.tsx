@@ -27,19 +27,19 @@ const LoginForms = () => {
 
   async function submitSignin(event: any) {
     event.preventDefault()
-    const user = getUserLocalStorage()
-    const users = user?.filter((user: any) => user.email === email)
+    const users = getUserLocalStorage()
+    const user = users?.filter((user: any) => user.email === email)
    
     try {
       if (!email || !password) {
         setError('Por favor, preencha todos os campos')
         return
-      } else if (email !== users[0]?.email || users[0]?.password !== password) {
+      } else if (email !== user[0]?.email || user[0]?.password !== password) {
         setError('Usuário não cadastrado')
         return
       } else {
         await auth.authenticate("intmed", "challenge")
-        setUserLocalStorage(users[0]?.name)
+        setUserLocalStorage(user[0]?.name)
         setError('')
         navigate('/')
       }
