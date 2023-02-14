@@ -6,9 +6,9 @@ type Props = {
 
 const DefaultLayout = ({children}: Props) => {
   return (
-    <div className={styles.container}>
+    <main className={styles.container}>
       {children}
-    </div>
+    </main>
   )
 }
 

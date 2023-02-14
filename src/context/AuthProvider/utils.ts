@@ -9,6 +9,15 @@ export function setUserLocalStorage (user: IUser | null) {
     localStorage.setItem('user_session', JSON.stringify(user))
 }
 
+export function getUserSessionLocalStorage () {
+    const user = localStorage.getItem('user_session')
+    if (!user) {
+        return null;
+    }
+    const userJson = JSON.parse(user)
+    return userJson ?? null;
+}
+
 export function getUserLocalStorage () {
     const user = localStorage.getItem('users')
     if (!user) {
