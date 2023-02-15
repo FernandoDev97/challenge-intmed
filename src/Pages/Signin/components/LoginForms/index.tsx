@@ -35,7 +35,7 @@ const LoginForms = () => {
         setError('Por favor, preencha todos os campos')
         return
       } else if (email !== user[0]?.email || user[0]?.password !== password) {
-        setError('Usuário não cadastrado')
+        setError('Usuário não cadastrado, ou senha incorreta')
         return
       } else {
         await auth.authenticate("intmed", "challenge")
@@ -44,7 +44,7 @@ const LoginForms = () => {
         navigate('/')
       }
     } catch (error) {
-      setError('Desculpe, tente novamente mais tarde')
+      setError('Crie uma conta para ter acesso a plataforma')
     }
   }
 

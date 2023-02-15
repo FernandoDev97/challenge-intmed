@@ -1,3 +1,4 @@
+import { Toaster } from 'react-hot-toast'
 import { BrowserRouter } from 'react-router-dom'
 import { AuthProvider } from './context/AuthProvider'
 import DefaultLayout from './layouts/DefaultLayout'
@@ -8,11 +9,16 @@ function App() {
 
   return (
     <AuthProvider>
+      <>
+      <Toaster position="top-right" reverseOrder={false}/>
       <DefaultLayout>
-        <BrowserRouter>
-          <Router />
-        </BrowserRouter>
+        
+          <BrowserRouter>
+            <Router />
+          </BrowserRouter>
+       
       </DefaultLayout>
+      </>
     </AuthProvider>
   )
 }
