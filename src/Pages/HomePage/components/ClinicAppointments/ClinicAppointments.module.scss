@@ -11,6 +11,19 @@
     flex-direction: column;
 }
 
+.noAppointments {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+
+    p {
+        font-weight: 400;
+        font-size: 14px;
+        color: $base-gray;
+    }
+}
+
 .containerAppointments {
     display: flex;
     flex-direction: column;
@@ -54,7 +67,6 @@
     grid-template-columns: repeat(4, 1fr);
     padding: .5rem .5rem;
     margin-top: 1.5rem;
- 
     
     span {
         text-transform: uppercase;

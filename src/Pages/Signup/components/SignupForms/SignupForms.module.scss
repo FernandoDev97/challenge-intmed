@@ -19,7 +19,7 @@
 
     .name, .email, .password, .passwordConfim {
         margin-bottom: -2rem;
-        z-index: 100;
+        z-index: 10;
         width: 100%;
         max-width: 3rem;
         background-color: $white;
@@ -63,4 +63,5 @@
 .buttons {
     display: flex;
     justify-content: space-between;
+    
 }

@@ -20,7 +20,7 @@ const ButtonVariation = ({ variation, label, disabled, type, onClick}: Props) =>
                     </span>
                 </button>
                 :
-                <button  className={styles.secundaryButton}>
+                <button onClick={onClick} className={styles.secundaryButton}>
                     <span>
                         {label}
                     </span>
