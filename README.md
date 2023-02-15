@@ -16,7 +16,7 @@ npm install
 yarn 
 ```
 
-Inicie o projeto com:
+Na branch master, inicie o projeto com:
 
 ```bash
 npm run dev
