@@ -14,7 +14,7 @@
 }
 
 .modal {
-    width: 30%;
+    width: 85%;
     height: 50%;
     background-color: $white;
     position: absolute;
@@ -23,6 +23,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    
+    @include media-tablet {
+        width: 36rem;
+    }
 }
 
 .content {
