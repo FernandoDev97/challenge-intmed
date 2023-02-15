@@ -8,7 +8,7 @@ Nesse projeto foi usado:
 
 ## Getting Started
 
-Primeiro instale as dependências com:
+Instale as dependências com:
 
 ```bash
 npm install
@@ -16,7 +16,7 @@ npm install
 yarn 
 ```
 
-Depois inicie o projeto coom:
+Inicie o projeto com:
 
 ```bash
 npm run dev
