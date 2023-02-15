@@ -87,7 +87,7 @@ const ClinicAppointments = () => {
                             <span>{appointment.horario}</span>
                         </div>
                         <button onClick={deleteAppointments} type='button'>
-                            <X size={12} weight='bold' />
+                            <X weight='bold' />
                             Desmarcar
                         </button>
                     </div>

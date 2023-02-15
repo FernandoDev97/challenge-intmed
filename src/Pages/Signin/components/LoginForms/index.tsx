@@ -50,7 +50,7 @@ const LoginForms = () => {
 
   return (
     <div className={styles.container}>
-      <img src={logoMedicar} alt="Logo Medicar" className={styles.logo} />
+      <img src={logoMedicar} alt="Logo Medicar" />
       <div>
         <form className={styles.form}>
           {email && <label className={styles.email} htmlFor='email'>Email ou Login</label>}

@@ -6,9 +6,15 @@
     flex-direction: column;
 
     img {
-        margin-bottom: 3.25rem;
-        max-width: 11.25rem;
-        height: 3.125rem;
+        margin-bottom: 2.5rem;
+        max-width: 8rem;
+        height: 2.5rem;
+
+        @include media-tablet {
+            max-width: 11.25rem;
+            height: 3.125rem;
+            margin-bottom: 3.25rem;
+        }
     }
 }
 
@@ -17,7 +23,8 @@
     flex-direction: column;
     gap: 1.4rem;
 
-    .email, .password {
+    .email,
+    .password {
         margin-bottom: -2rem;
         z-index: 10;
         width: 100%;
@@ -64,8 +71,10 @@
     display: flex;
     align-items: center;
     gap: .5rem;
+
     .rememberPassword {
         display: none;
+
         &:checked+label .checkbox {
             &:after {
                 transform: translate(-50%, -50%) scale(1);
@@ -96,6 +105,7 @@
             transition: 0.3s;
         }
     }
+
     .label {
         font-size: 13px;
         color: $base-gray;
